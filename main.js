@@ -16,8 +16,11 @@ const reducer = (accumulator, curr) => accumulator + numberMap[curr]
 const arrayConverter = (givenArray) => {
 
     let results = []
+    givenArray.forEach(element => {
+        let curr = Array.from(String(element), Number).reduce(reducer, '')
+        results.push(curr)
+    })
+    console.log(results.join(','))
 }
 
-n = 345
-let curr = Array.from(String(n), Number).reduce(reducer, '')
-console.log(curr)
+arrayConverter(process.argv.slice(2))
